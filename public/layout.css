@@ -1,0 +1,35 @@
+body{background-color: #ebeef4}
+#wrapper{width:600px; margin:auto}
+#txtUsername{background-color: transparent; border:solid 1px black}
+
+#left, #right{height:350px;}
+#left{width:30%; float:left; background-color: #f0f2d0;
+}
+#right{width:70%; float:right; background-color: #d4f9f8}
+
+#boxTitle{border: solid 1px black; padding:5px; text-align: center; font-weight: bold}
+#boxContent{border: solid 1px black; border-top: none; padding: 5px; text-align: center;
+    overflow: auto;
+    height: 310px;
+}
+#sayHi{text-align: right}
+#listMessages{
+    height:250px; background-color: #fcead4; margin-bottom: 15px;
+    overflow: auto;
+}
+
+#txtMessage{background-color: transparent; border: solid 1px black}
+#chatForm{display: none}
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}

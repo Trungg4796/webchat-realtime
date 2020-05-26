@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Demo Chat</title>
+
+    <script src="jquery.js"></script>
+    <script src="https://qt-webchat.herokuapp.com/socket.io/socket.io.js"></script>
+    <script src="xuly.js"></script>
+    <script src="bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="layout.css" />
+  </head>
+  <body>
+
+  <div id="wrapper">
+
+    <div id="loginForm">
+      <form id="formLogin" class="form-inline">
+      <h3>WHAT'S YOUR NAME?</h3>
+      <input type="text" id="txtUsername" class="form-control "/>
+      <input type="submit" value="Register" id="btnRegister" class='btn btn-success' />
+      </form>
+    </div>
+
+    <div id="chatForm">
+      <div id="left">
+        <div id="boxTitle">Users Online</div>
+        <div id="boxContent"></div>
+      </div>
+      <div id="right">
+        <div id="sayHi">
+          Hello <span id="currentUser"><b>Teo</b></span>
+          <input type="button" id="btnLogout" value="Logout" class="btn btn-danger btn-sm">
+        </div>
+
+        <div id="listMessages">
+        </div>
+
+        <div id="thongbao"></div>
+        <form id="formChat" class="form-inline">
+        <input type="text" id="txtMessage" class="form-control" />
+        <input type="submit" id="btnSendMessage" value="Send" class='btn btn-primary' />
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  </body>
+</html>
