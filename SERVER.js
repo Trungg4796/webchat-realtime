@@ -9,6 +9,7 @@ var io = require("socket.io")(server);
 server.listen(process.env.PORT || 3004);
 
 var mangUsers = [];
+var listMessage = [];
 
 io.on("connection", function (socket) {
   console.log("Co nguoi ket noi " + socket.id);
@@ -20,6 +21,7 @@ io.on("connection", function (socket) {
       mangUsers.push(data);
       socket.Username = data;
       socket.emit("server-send-dki-thanhcong", data);
+      socket.emit("server-send-message", listMessage);
       io.sockets.emit("server-send-danhsach-Users", mangUsers);
     }
   });
@@ -32,7 +34,13 @@ io.on("connection", function (socket) {
   });
 
   socket.on("user-send-message", function (data) {
-    io.sockets.emit("server-send-mesage", { un: socket.Username, nd: data });
+    let temp = {
+      user: socket.Username,
+      content: data,
+    }
+    listMessage.push(temp);
+    // io.sockets.emit("server-send-mesage", { un: socket.Username, nd: data });
+    io.sockets.emit("server-send-message",listMessage);
   });
 
   socket.on("toi-dang-go-chu", function () {

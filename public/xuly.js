@@ -1,4 +1,5 @@
-var socket = io("https://qt-webchat.herokuapp.com/");
+var socket = io("http://localhost:3004");
+// var socket = io("https://qt-webchat.herokuapp.com/");
 var currentUser = "";
 
 socket.on("server-send-dki-thatbai", function () {
@@ -15,14 +16,20 @@ socket.on("server-send-danhsach-Users", function (data) {
 });
 
 socket.on("server-send-dki-thanhcong", function (data) {
-  $("#currentUser").html(data);
+  $("#currentUser").html(`<b>${data}</b>`);
   $("#loginForm").hide(2000);
   $("#chatForm").show(1000);
   currentUser = data;
 });
 
-socket.on("server-send-mesage", function (data) {
-  $("#listMessages").append("<div class='ms'><b>" + data.un + "</b>:" + data.nd + "</div>");
+socket.on("server-send-message", function (data) {
+  $("#listMessages").html("");
+  for (let i of data) {
+    let classname = 'ms';
+    if (currentUser == i.user) classname = 'my-ms';
+    $("#listMessages").append(`<div class='${classname}'><b>${i.user}</b>: ${i.content}</div>`);
+  }
+
 });
 
 socket.on("ai-do-dang-go-chu", function (data) {
@@ -46,31 +53,28 @@ $(document).ready(function () {
     socket.emit("toi-stop-go-chu");
   })
 
-  // $("#btnRegister").click(function(){
-  //   socket.emit("client-send-Username", $("#txtUsername").val());
-  // });
   $("#formLogin").submit(function (e) {
     socket.emit("client-send-Username", $("#txtUsername").val());
+    setTimeout(() => {
+      var objDiv = document.getElementById("listMessages");
+      objDiv.scrollTop = objDiv.scrollHeight;
+    }, 500);
+
     e.preventDefault();
-
   })
-
   $("#btnLogout").click(function () {
     socket.emit("logout");
     $("#chatForm").hide(2000);
     $("#loginForm").show(1000);
   });
 
-  // $("#btnSendMessage").click(function(){
-  //   socket.emit("user-send-message", $("#txtMessage").val());
-  // });
   $("#formChat").submit(function (e) {
     e.preventDefault();
     socket.emit("user-send-message", $("#txtMessage").val());
     socket.emit("toi-stop-go-chu");
     $("#txtMessage").val("");
-    // $("#txtMessage").blur();
+    var objDiv = document.getElementById("listMessages");
+    objDiv.scrollTop = objDiv.scrollHeight;
   });
-
 
 });

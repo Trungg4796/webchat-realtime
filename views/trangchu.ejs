@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Demo Chat</title>
 
-    <script src="jquery.js"></script>
-    <script src="https://qt-webchat.herokuapp.com/socket.io/socket.io.js"></script>
-    <script src="xuly.js"></script>
-    <script src="bootstrap.js"></script>
-    <link rel="stylesheet" type="text/css" href="bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="layout.css" />
-  </head>
-  <body>
+<head>
+  <meta charset="utf-8">
+  <title>Demo Chat</title>
+
+  <script src="jquery.js"></script>
+  <!-- <script src="https://qt-webchat.herokuapp.com/socket.io/socket.io.js"></script> -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="xuly.js"></script>
+  <script src="bootstrap.js"></script>
+  <link rel="stylesheet" type="text/css" href="bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="layout.css" />
+</head>
+
+<body>
 
   <div id="wrapper">
 
     <div id="loginForm">
       <form id="formLogin" class="form-inline">
-      <h3>WHAT'S YOUR NAME?</h3>
-      <input type="text" id="txtUsername" class="form-control "/>
-      <input type="submit" value="Register" id="btnRegister" class='btn btn-success' />
+        <h3>WHAT'S YOUR NAME?</h3>
+        <input type="text" id="txtUsername" class="form-control " />
+        <input type="submit" value="Register" id="btnRegister" class='btn btn-success' />
       </form>
     </div>
 
@@ -30,7 +33,7 @@
       </div>
       <div id="right">
         <div id="sayHi">
-          Hello <span id="currentUser"><b>Teo</b></span>
+          Hello <span id="currentUser"> _ </span>
           <input type="button" id="btnLogout" value="Logout" class="btn btn-danger btn-sm">
         </div>
 
@@ -39,13 +42,16 @@
 
         <div id="thongbao"></div>
         <form id="formChat" class="form-inline">
-        <input type="text" id="txtMessage" class="form-control" />
-        <input type="submit" id="btnSendMessage" value="Send" class='btn btn-primary' />
+          <div>
+            <input type="text" id="txtMessage" class="form-control" style="display: unset; width: unset" />
+            <input type="submit" id="btnSendMessage" value="Send" class='btn btn-primary' />
+          </div>
         </form>
       </div>
     </div>
 
   </div>
 
-  </body>
+</body>
+
 </html>

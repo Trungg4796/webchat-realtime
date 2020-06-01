@@ -14,10 +14,12 @@ body{background-color: #ebeef4}
 }
 #sayHi{text-align: right}
 #listMessages{
-    height:250px; background-color: #fcead4; margin-bottom: 15px;
+    height:240px; background-color: #fcead4; margin-bottom: 15px;
     overflow: auto;
 }
-
+div.my-ms{
+  text-align: right;
+}
 #txtMessage{background-color: transparent; border: solid 1px black}
 #chatForm{display: none}
 ::-webkit-scrollbar {
